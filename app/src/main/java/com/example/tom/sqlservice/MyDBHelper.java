@@ -15,6 +15,9 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
+
+
         final String create =
                 ("CREATE TABLE tblTable (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
                         + "cProductID TEXT, "
@@ -26,9 +29,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        final String DROP_TABLE = "DROP TABLE tblTable";
-        db.execSQL(DROP_TABLE);
-        onCreate(db);
+
     }
 
 }

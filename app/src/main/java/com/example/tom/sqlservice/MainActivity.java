@@ -136,10 +136,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick (View v){
-        DB_NUM++;
-        helper = new MyDBHelper(this, DB_NAME, null, 30);
+
+        helper = new MyDBHelper(this, DB_NAME, null, 1);
         db = helper.getWritableDatabase();
-        Log.e("DB", String.valueOf(DB_NUM));
+        db.delete(DB_NAME, null, null);
         Get get = new Get();
         get.start();
 
