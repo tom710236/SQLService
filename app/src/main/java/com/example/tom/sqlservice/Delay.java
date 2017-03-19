@@ -17,14 +17,17 @@ import android.util.Log;
 /**
  * Created by TOM on 2017/3/14.
  */
-
+//繼承Service (需在Manifests上宣告此Service)
 public class Delay extends Service{
+    //宣告
     Runnable runnable;
     Handler handler;
     int i=0;
+    //建構子
     public Delay(){
     }
-
+    // startServicec後
+    // 每五秒就執行Log.e("delay","timeDelay");和makeNotification();
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         handler = new Handler();
@@ -41,7 +44,8 @@ public class Delay extends Service{
         handler.postDelayed(runnable,5000);
         return super.onStartCommand(intent, flags, startId);
     }
-
+    //stopService後
+    //執行Log.e("STOP","STOP") ,handler.removeCallbacks(runnable);
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -54,7 +58,7 @@ public class Delay extends Service{
     public IBinder onBind(Intent intent) {
         return null;
     }
-
+    //推播
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void makeNotification() {
         Bitmap bmp = BitmapFactory
